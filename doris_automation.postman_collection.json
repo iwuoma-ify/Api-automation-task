@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "97d1e891-85cf-4219-8b20-ac74092a5ffa",
+		"name": "doris_automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get test",
+			"item": [
+				{
+					"name": "post",
+					"item": [
+						{
+							"name": "post request",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "bfc8a595-064b-4f73-a78b-31b2aa6b59eb",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "3668e940-ba4c-429a-bed2-4f43b56e1c2d",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Successful POST request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([201,200, 202]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "header_server",
+										"value": "cloudflare",
+										"description": "cloudflare",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"email\" : \"eve.holt@reqres.in\",\r\n    \"password\" : \"pistol\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://reqres.in/api/register",
+									"protocol": "https",
+									"host": [
+										"reqres",
+										"in"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "post blog",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8bbea81c-4233-45cf-8e92-c6915696485d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}",
+									"host": [
+										"{{base_url}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "post blog",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{url}",
+											"host": [
+												"{url}"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "get status",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a32f64df-f905-4666-9e3b-4a8cd66a9b01",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "63bf0361-ae10-4e05-8ad1-39a2e2753d35",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,200,202]);\r",
+									"});\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "application",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://docs.postman-echo.com",
+							"protocol": "http",
+							"host": [
+								"docs",
+								"postman-echo",
+								"com"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
